@@ -1,0 +1,85 @@
+.productPage-container {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    top: 5rem;
+}
+
+.sort-container {
+    position: relative;
+    width: 80%;
+    left: 0;
+}
+
+.product-container {
+    width: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 5rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.product-img-container {
+    padding: 1rem;
+    /* background-color: aqua; */
+    position: relative;
+    /* left: 0; */
+    width: 19%;
+
+}
+
+.product-img {
+    height: auto;
+    width: 5rem;
+}
+
+.product-info-container {
+    padding: 1rem;
+    position: relative;
+    /* background-color: black; */
+    width: 59%;
+    gap: 2rem;
+}
+
+.add-to-cart-and-view-details {
+    display: flex;
+    gap: 2rem;
+}
+
+.pricing-and-delivery-container {
+    padding: 1rem;
+    position: relative;
+    /* background-color: brown; */
+    width: 19%;
+    right: 0;
+}
+
+/* .link {
+    text-decoration: none;
+    color: inherit;
+    justify-content: center;
+    align-items: center;
+} */
+
+.wishlist-button-container {
+    /* display: inline; */
+    width: 3%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.7rem;
+    margin-top: 0.7rem;
+}
+
+.wishlist-button {
+    border-radius: 5rem;
+}

@@ -1,0 +1,41 @@
+.navbar-container {
+    /* height: 10vh; */
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: #240750;
+    z-index: 99;
+}
+
+.logo-container {
+    padding: 2rem;
+}
+
+.logo {
+    height: auto;
+    width: 3rem;
+}
+
+.search-box-container {
+    width: 20%;
+    height: 55%;
+    align-items: center;
+}
+
+.input-search-box {
+    width: 85%;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid black;
+    border-radius: 4px;
+}
+
+.wishlist-cart-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    color: white;
+}
