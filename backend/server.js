@@ -14,7 +14,7 @@ const server = express();
 // connection to database
 mongoose
     .connect(
-        "mongodb+srv://ishaant97:RsGts2nSNIJHHPBe@cluster0.99an1is.mongodb.net/ecommerceDatabase"
+        process.env.MONOGODB_URI
         // "mongodb://127.0.0.1:27017/ecommerce"
     )
     .then(() => {
