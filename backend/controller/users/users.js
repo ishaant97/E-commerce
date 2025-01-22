@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 function generateToken(user) {
     const payload = {
-        id: user._id,
+        id: user._id, // Ensure this is id
         email: user.email
     }
     return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "24h" });
@@ -29,7 +29,7 @@ const createUser = async (req, res) => {
 const logIn = async (req, res) => {
     try {
         const user = req.body;
-        const response = await Users.findOne({ email: user.email });
+        const response = await Users.findOne({ email: user.email }).select("+password");
         if (response) {
             const isPasswordValid = bcrypt.compare(user.password, response.password);
 
@@ -52,5 +52,24 @@ const logIn = async (req, res) => {
     }
 }
 
+const logOut = async (req, res) => {
+    try {
+        res.clearCookie("token");
+        res.status(200).json({ message: "Logged Out" });
+    }
+    catch (err) {
+        res.status(400).json(err);
+    }
+}
 
-module.exports = { createUser, logIn };
+const getUserProfile = async (req, res) => {
+    try {
+        res.status(200).json(req.user);
+    }
+    catch (err) {
+        res.status(400).json(err);
+    }
+}
+
+
+module.exports = { createUser, logIn, logOut, getUserProfile };

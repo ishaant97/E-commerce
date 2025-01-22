@@ -15,7 +15,7 @@ const usersSchema = new Schema({
         validate: [validateEmail, "Please enter a valid email"],
         unique: [true, "Email already exists"],
     },
-    password: { type: String, required: [true, "Password required"] },
+    password: { type: String, required: [true, "Password required"], select: false },
 });
 
 
