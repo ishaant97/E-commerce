@@ -16,8 +16,10 @@ const usersSchema = new Schema({
         unique: [true, "Email already exists"],
     },
     password: { type: String, required: [true, "Password required"], select: false },
+    wishList: [{ type: String }],
+    cart: [{ type: String }],
+    orders: [{ type: String }],
 });
-
 
 const Users = mongoose.model("Users", usersSchema);
 

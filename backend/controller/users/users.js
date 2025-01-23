@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 function generateToken(user) {
     const payload = {
-        id: user._id, // Ensure this is id
+        id: user._id,
         email: user.email
     }
     return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "24h" });
@@ -71,5 +71,34 @@ const getUserProfile = async (req, res) => {
     }
 }
 
+const addToWishlist = async (req, res) => {
+    try {
+        const user = req.user;
+        const asin = req.body.asin;
 
-module.exports = { createUser, logIn, logOut, getUserProfile };
+        if (!user.wishList.includes(asin)) {
+            user.wishList.push(asin);
+            await user.save();
+            res.status(200).json({ message: "Product added to wishlist" });
+        } else {
+            res.status(400).json({ message: "Product already in wishlist" });
+        }
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
+const removeFromWishlist = async (req, res) => {
+    try {
+        const user = req.user;
+        const asin = req.body.asin;
+
+        user.wishList = user.wishList.filter(item => item !== asin);
+        await user.save();
+        res.status(200).json({ message: "Product removed from wishlist" });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
+module.exports = { createUser, logIn, logOut, getUserProfile, addToWishlist, removeFromWishlist };
